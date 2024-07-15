@@ -3,13 +3,9 @@ package com.vamsi.spring.learn_spring_framework;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
+import com.vamsi.spring.learn_spring_framework.enterprise.example.web.MyWebController;
 import com.vamsi.spring.learn_spring_framework.game.GameRunner;
-import com.vamsi.spring.learn_spring_framework.game.MarioGame;
-import com.vamsi.spring.learn_spring_framework.game.PacmanGame;
-import com.vamsi.spring.learn_spring_framework.game.SuperContraGame;
-import com.vamsi.spring.learn_spring_framework.game.GamingConsole;
 
 
 @SpringBootApplication
@@ -25,8 +21,10 @@ public class LearnSpringFrameworkApplication {
 //		GameRunner runner = new GameRunner(game);
 		
 		GameRunner runner = context.getBean(GameRunner.class);
-		
 		runner.run();
+		
+		MyWebController controller = context.getBean(MyWebController.class);
+		System.out.println(controller.returnValueFromBusinessService());
 	}
 
 }
